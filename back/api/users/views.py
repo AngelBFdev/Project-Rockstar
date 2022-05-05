@@ -17,7 +17,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
     permission_classes = []
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
 class LoginView(APIView):
     def post(self, request):
@@ -37,8 +37,7 @@ class LoginView(APIView):
         response.data = {
             'id': user.id,
             'email': user.email,
-            #changes
-            'type': user.type
+            'mode': user.mode
         }
         return response
 
@@ -58,4 +57,4 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    #permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]

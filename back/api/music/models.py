@@ -8,7 +8,7 @@ class Artist(models.Model):
     return f'{self.name}'
 
 class Album(models.Model):
-  image = models.CharField(max_length=128)
+  image = models.TextField(null=True)
   name = models.CharField(max_length=128, null=True)
   genre = models.CharField(max_length=128, null=True)
   release_date = models.DateField(null=True)
@@ -21,8 +21,8 @@ class Album(models.Model):
 class Song(models.Model):
   name = models.CharField(max_length=128)
   song_length = models.CharField(max_length=128, null=True)
-  song_file = models.CharField(max_length=128, null=True)
-  song_preview = models.CharField(max_length=128, null=True)
+  song_file = models.TextField(null=True)
+  song_preview = models.TextField(null=True)
   price = models.DecimalField(max_digits=7, decimal_places=2, null=True)
   play = models.IntegerField(null=True, default=0)
   album = models.ForeignKey(Album, on_delete=models.CASCADE)

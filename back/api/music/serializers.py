@@ -8,13 +8,13 @@ class ArtistSerializer(serializers.ModelSerializer):
 		fields = ['id', 'name', 'nationality']
 
 class AlbumSerializer(serializers.ModelSerializer):
-	authors = serializers.StringRelatedField(many=True)
+	authors = ArtistSerializer(many=True)
 	class Meta:
 		model = Album
 		fields = ['id', 'name', 'image', 'genre', 'release_date', 'price', 'authors']
 
 class SongSerializer(serializers.ModelSerializer):
-	album = serializers.StringRelatedField()
+	album = AlbumSerializer()
 	class Meta:
 		model = Song
 		fields = ['id', 'name', 'song_length', 'song_file', 'song_preview', 'price', 'play', 'album']

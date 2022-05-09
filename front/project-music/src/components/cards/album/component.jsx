@@ -5,24 +5,27 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { FC } from 'react';
 
-export default function SongCard() {
+function AlbumCard({ album }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="300"
-        image="https://m.media-amazon.com/images/I/51sFQJrJxZL._AC_.jpg"
+        image={album.image}
         alt="Cover"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          CryBaby
+          {album.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Melanie Martinez
+          {album.authors[0].name}
         </Typography>
       </CardContent>
     </Card>
   );
 }
+
+export default AlbumCard

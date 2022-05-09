@@ -10,3 +10,8 @@ export interface AlbumProps {
   genre: string;
   release_date: string;
 }
+export interface ArtistProps {
+  image: string;
+  name: string;
+  nationality: string;
+}

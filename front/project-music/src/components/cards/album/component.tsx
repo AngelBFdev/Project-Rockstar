@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { FC } from 'react';
 import { AlbumCardProps } from './types';
 
-const AlbumCard: FC<AlbumCardProps> = ({ image,name,authors })=> {
+const AlbumCard: FC<AlbumCardProps> = ({ image,name,authors,price,genre })=> {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -21,8 +21,11 @@ const AlbumCard: FC<AlbumCardProps> = ({ image,name,authors })=> {
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
+        <Typography variant="body1" color="text.secondary">
+          ${price}
+        </Typography>
         <Typography variant="body2" color="text.secondary">
-          {authors[0].name}
+          {authors[0].name} - {genre}
         </Typography>
       </CardContent>
     </Card>

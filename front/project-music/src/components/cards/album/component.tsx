@@ -6,22 +6,23 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { FC } from 'react';
+import { AlbumCardProps } from './types';
 
-function AlbumCard({ album }) {
+const AlbumCard: FC<AlbumCardProps> = ({ image,name,authors })=> {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="300"
-        image={album.image}
+        image={image}
         alt="Cover"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {album.name}
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {album.authors[0].name}
+          {authors[0].name}
         </Typography>
       </CardContent>
     </Card>

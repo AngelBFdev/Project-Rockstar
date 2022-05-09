@@ -13,7 +13,7 @@ class Album(models.Model):
   genre = models.CharField(max_length=128, null=True)
   release_date = models.DateField(null=True)
   price = models.DecimalField(max_digits=7, decimal_places=2, null=True)
-  authors = models.ManyToManyField(Artist, through='AlbumsArtists')
+  authors = models.ManyToManyField(Artist, through='AlbumsArtists',null=True)
 
   def __str__(self):
     return f'{self.name}'

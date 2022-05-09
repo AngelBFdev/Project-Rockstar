@@ -5,7 +5,7 @@ from .models import *
 class ArtistSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Artist
-		fields = ['id', 'name', 'nationality']
+		fields = ['id', 'name', 'nationality','image']
 
 class AlbumSerializer(serializers.ModelSerializer):
 	authors = ArtistSerializer(many=True)

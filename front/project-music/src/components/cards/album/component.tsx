@@ -7,20 +7,25 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { FC } from 'react';
 import { AlbumCardProps } from './types';
+import { Link } from 'react-router-dom';
 
-const AlbumCard: FC<AlbumCardProps> = ({ image,name,authors,price,genre })=> {
+const AlbumCard: FC<AlbumCardProps> = ({ id,image,name,authors,price,genre })=> {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="300"
-        image={image}
-        alt="Cover"
-      />
+      <Link to ={`/album/${id}`}>
+        <CardMedia
+          component="img"
+          height="300"
+          image={image}
+          alt="Cover"
+        />
+      </Link>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {name}
-        </Typography>
+        <Link to ={`/album/${id}`}>
+          <Typography gutterBottom variant="h5" component="div">
+            {name}
+          </Typography>
+        </Link>
         <Typography variant="body1" color="text.secondary">
           ${price}
         </Typography>

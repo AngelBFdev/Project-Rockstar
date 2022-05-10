@@ -3,6 +3,7 @@ interface AuthorsProps{
 }
 
 export interface AlbumProps {
+  id: number;
   image: string;
   name: string;
   price: number;
@@ -11,6 +12,7 @@ export interface AlbumProps {
   release_date: string;
 }
 export interface ArtistProps {
+  id: number;
   image: string;
   name: string;
   nationality: string;

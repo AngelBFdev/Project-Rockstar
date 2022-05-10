@@ -1,4 +1,4 @@
-export const getAlbumById = async (id:number) => {
+export const getAlbumById = async (id:string) => {
   try{
     const response = await fetch(`http://3.218.67.164:9004/music/album/${id}/`);
     if(response.status!== 200) return;

@@ -11,9 +11,7 @@ export interface AlbumProps {
   genre: string;
   release_date: string;
 }
-export interface ArtistProps {
-  id: number;
-  image: string;
-  name: string;
-  nationality: string;
+
+export interface Params {
+  id: string;
 }

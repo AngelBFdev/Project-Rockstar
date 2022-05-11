@@ -3,7 +3,7 @@ import AlbumCard from '../../components/cards/album/component'
 import { getAlbums } from '../../services/api/album/albums';
 import { Box, Typography } from '@mui/material';
 import { AlbumProps, ArtistProps } from './types';
-import { getArtist } from '../../services/api/artist';
+import { getArtists } from '../../services/api/artists/artists';
 import ArtistCard from '../../components/cards/artist/component';
 
 function HomeView() {
@@ -19,7 +19,7 @@ function HomeView() {
 
   useEffect(() => {
     const loadArtist = async () => {
-      const Artist = await getArtist();
+      const Artist = await getArtists();
       setArtist(Artist);
     };
     loadArtist();

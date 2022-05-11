@@ -8,18 +8,17 @@ class ArtistSerializer(serializers.ModelSerializer):
 		fields = ['id', 'name', 'nationality','image']
 
 class AlbumSerializer(serializers.ModelSerializer):
-	authors = ArtistSerializer(many=True)
+	# author = ArtistSerializer()
 	class Meta:
 		model = Album
-		fields = ['id', 'name', 'image', 'genre', 'release_date', 'price', 'authors']
+		fields = ['id', 'name', 'image', 'genre', 'release_date', 'price', 'author']
 
 class SongSerializer(serializers.ModelSerializer):
-	album = AlbumSerializer()
 	class Meta:
 		model = Song
 		fields = ['id', 'name', 'song_length', 'song_file', 'song_preview', 'price', 'play', 'album']
 
-class AlbumsArtistsSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = AlbumsArtists
-		fields = ['id', 'album', 'artist']
+# class AlbumsArtistsSerializer(serializers.ModelSerializer):
+# 	class Meta:
+# 		model = AlbumsArtists
+# 		fields = ['id', 'album', 'artist']

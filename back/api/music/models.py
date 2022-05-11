@@ -14,7 +14,8 @@ class Album(models.Model):
   genre = models.CharField(max_length=128, null=True)
   release_date = models.DateField(null=True)
   price = models.DecimalField(max_digits=7, decimal_places=2, null=True)
-  authors = models.ManyToManyField(Artist, through='AlbumsArtists',null=True)
+  # authors = models.ManyToManyField(Artist, through='AlbumsArtists',null=True)
+  author = models.ForeignKey(Artist, on_delete=models.CASCADE, null=True)
 
   def __str__(self):
     return f'{self.name}'
@@ -31,9 +32,9 @@ class Song(models.Model):
   def __str__(self):
     return f'{self.name}'
 
-class AlbumsArtists(models.Model):
-	album = models.ForeignKey(Album, related_name='AlbumWithArtists', on_delete=models.DO_NOTHING)
-	artist = models.ForeignKey(Artist, related_name='ArtistWithAlbums', on_delete=models.DO_NOTHING)
+# class AlbumsArtists(models.Model):
+# 	album = models.ForeignKey(Album, related_name='AlbumWithArtists', on_delete=models.DO_NOTHING)
+# 	artist = models.ForeignKey(Artist, related_name='ArtistWithAlbums', on_delete=models.DO_NOTHING)
 
-	def __str__(self):
-		return f'{self.id}'
+# 	def __str__(self):
+# 		return f'{self.id}'

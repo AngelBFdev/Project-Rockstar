@@ -5,6 +5,7 @@ import { Box, Typography } from '@mui/material';
 import { AlbumProps, ArtistProps } from './types';
 import { getArtists } from '../../services/api/artists/artists';
 import ArtistCard from '../../components/cards/artist/component';
+import { Styles } from '../../theme/types';
 
 function HomeView() {
   const [Album, setAlbum] = useState<any>(undefined);
@@ -24,29 +25,44 @@ function HomeView() {
     };
     loadArtist();
   }, []);
+
+  const styles: Styles = {
+    body: {
+      marginLeft: "3rem",
+      marginTop: "1rem"
+    },
+    list:{
+      display: "flex",
+    },
+  };
+
   return (
-    <>
-      <Typography variant="h3" component="div" gutterBottom>
-        Albums
-      </Typography>
-      <Box sx={{ display: 'flex' }}>
-        {Album?.map((album: AlbumProps) => (
-          <AlbumCard
-            {...album}
-          />
-        ))}
-      </Box>
+    <Box sx={styles.body}>
+      {Album !== undefined ? (
+        <>
+          <Typography variant="h3" component="div" gutterBottom>
+            Albums
+          </Typography>
+          <Box sx={styles.list}>
+            {Album.map((album: AlbumProps) => (
+              <AlbumCard
+                {...album}
+              />
+            ))}
+          </Box>
+        </>
+      ) : null}
       <Typography variant="h3" component="div" gutterBottom>
         Artists
       </Typography>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={styles.list}>
         {Artist?.map((artist: ArtistProps) => (
           <ArtistCard
             {...artist}
           />
         ))}
       </Box>
-    </>
+    </Box>
   )
 }
 

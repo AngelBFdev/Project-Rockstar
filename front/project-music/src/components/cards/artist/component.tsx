@@ -7,15 +7,22 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { FC } from 'react';
 import { ArtistCardProps } from './types';
+import { Styles } from '../../../theme/types';
 
-const ArtistCard: FC<ArtistCardProps> = ({ image,name })=> {
+const ArtistCard: FC<ArtistCardProps> = ({ image, name }) => {
+  const styles: Styles = {
+    card: {
+      marginRight: "3rem",
+      maxWidth: 300,
+    },
+  };
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={styles.card}>
       <CardMedia
         component="img"
         height="300"
         image={image}
-        alt="Cover"
+        alt= "Cover"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

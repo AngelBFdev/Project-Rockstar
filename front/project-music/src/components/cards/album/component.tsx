@@ -9,6 +9,7 @@ import { FC, useEffect, useState } from 'react';
 import { AlbumCardProps } from './types';
 import { Link } from 'react-router-dom';
 import { getArtistById } from '../../../services/api/artists/artist';
+import { Styles } from '../../../theme/types';
 
 const AlbumCard: FC<AlbumCardProps> = ({ id,image,name,author,price,genre })=> {
 
@@ -20,9 +21,14 @@ const AlbumCard: FC<AlbumCardProps> = ({ id,image,name,author,price,genre })=> {
     };
     loadArtist();
   }, []);
-
+  const styles: Styles = {
+    card: {
+      marginRight: "3rem",
+      maxWidth: 300,
+    },
+  };
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={styles.card}>
       <Link to ={`/album/${id}`}>
         <CardMedia
           component="img"

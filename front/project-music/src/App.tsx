@@ -5,6 +5,7 @@ import Header from './components/headers';
 import HomeView from './views/Home/component';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import AlbumView from './views/Album/component';
+import ArtistView from './views/Artist/component';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeView />}/>
         <Route path="/album/:id" element={<AlbumView />}/>
+        <Route path="/artist/:id" element={<ArtistView />}/>
       </Routes>
     </BrowserRouter>
   );

@@ -8,8 +8,9 @@ import Typography from '@mui/material/Typography';
 import { FC } from 'react';
 import { ArtistCardProps } from './types';
 import { Styles } from '../../../theme/types';
+import { Link } from 'react-router-dom';
 
-const ArtistCard: FC<ArtistCardProps> = ({ image, name }) => {
+const ArtistCard: FC<ArtistCardProps> = ({ id, image, name }) => {
   const styles: Styles = {
     card: {
       marginRight: "3rem",
@@ -18,16 +19,20 @@ const ArtistCard: FC<ArtistCardProps> = ({ image, name }) => {
   };
   return (
     <Card sx={styles.card}>
-      <CardMedia
-        component="img"
-        height="300"
-        image={image}
-        alt= "Cover"
-      />
+      <Link to={`/artist/${id}`}>
+        <CardMedia
+          component="img"
+          height="300"
+          image={image}
+          alt="Cover"
+        />
+      </Link>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {name}
-        </Typography>
+        <Link to={`/artist/${id}`}>
+          <Typography gutterBottom variant="h5" component="div">
+            {name}
+          </Typography>
+        </Link>
       </CardContent>
     </Card>
   );

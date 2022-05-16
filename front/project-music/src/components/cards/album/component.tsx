@@ -5,13 +5,30 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { AlbumCardProps } from './types';
 import { Link } from 'react-router-dom';
+import { getArtistById } from '../../../services/api/artists/artist';
+import { Styles } from '../../../theme/types';
 
-const AlbumCard: FC<AlbumCardProps> = ({ id,image,name,authors,price,genre })=> {
+const AlbumCard: FC<AlbumCardProps> = ({ id,image,name,author,price,genre })=> {
+
+  const [Artist, setArtist] = useState<any>(undefined);
+  useEffect(() => {
+    const loadArtist = async () => {
+      const artist = await getArtistById(author);
+      setArtist(artist);
+    };
+    loadArtist();
+  }, []);
+  const styles: Styles = {
+    card: {
+      marginRight: "3rem",
+      maxWidth: 300,
+    },
+  };
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={styles.card}>
       <Link to ={`/album/${id}`}>
         <CardMedia
           component="img"
@@ -30,7 +47,7 @@ const AlbumCard: FC<AlbumCardProps> = ({ id,image,name,authors,price,genre })=> 
           ${price}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {authors[0].name} - {genre}
+          {Artist?.name} - {genre}
         </Typography>
       </CardContent>
     </Card>

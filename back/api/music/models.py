@@ -57,7 +57,7 @@ class TicketsAlbums(models.Model):
 		return f'{self.id}'
 
 class TicketsSongs(models.Model):
-	song = models.ForeignKey(Album, related_name='SongWithTickets', on_delete=models.DO_NOTHING)
+	song = models.ForeignKey(Song, related_name='SongWithTickets', on_delete=models.DO_NOTHING)
 	ticket = models.ForeignKey(Ticket, related_name='TicketWithSongs', on_delete=models.DO_NOTHING)
 
 	def __str__(self):

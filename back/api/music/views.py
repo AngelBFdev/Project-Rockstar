@@ -56,7 +56,7 @@ class ArtistAlbumsView(APIView):
     artistId = request.data['id']
     data = {}
 
-    albums = Album.objects.filter(artist=artistId)
+    albums = Album.objects.filter(author_id=artistId)
     response = Response()
 
     for i in range(len(albums)):
@@ -65,6 +65,7 @@ class ArtistAlbumsView(APIView):
         'name': albums[i].name,
         'image': albums[i].image,
         'genre': albums[i].genre,
+        'price': albums[i].price,
       }
     response.data=data
     return response

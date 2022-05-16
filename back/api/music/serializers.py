@@ -22,3 +22,19 @@ class SongSerializer(serializers.ModelSerializer):
 # 	class Meta:
 # 		model = AlbumsArtists
 # 		fields = ['id', 'album', 'artist']
+
+class TicketSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Ticket
+		fields = ['id', 'purchase_date', 'user', 'albums', 'songs', 'total_price']
+
+
+class TicketsAlbumsSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = TicketsAlbums
+		fields = ['id', 'ticket', 'album']
+
+class TicketsSongsSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = TicketsSongs
+		fields = ['id', 'ticket', 'song']

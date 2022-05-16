@@ -20,10 +20,20 @@ class ArtistViewSet(viewsets.ModelViewSet):
   serializer_class = ArtistSerializer
   permission_classes = []
 
-# class AlbumsArtistsViewSet(viewsets.ModelViewSet):
-#   queryset = AlbumsArtists.objects.all().order_by('id')
-#   serializer_class = AlbumsArtistsSerializer
-#   permission_classes = []
+class TicketViewSet(viewsets.ModelViewSet):
+  queryset = Ticket.objects.all().order_by('purchase_date')
+  serializer_class = TicketSerializer
+  permission_classes = []
+
+class TicketsAlbumsViewSet(viewsets.ModelViewSet):
+  queryset = TicketsAlbums.objects.all().order_by('id')
+  serializer_class = TicketsAlbumsSerializer
+  permission_classes = []
+
+class TicketsSongsViewSet(viewsets.ModelViewSet):
+  queryset = TicketsSongs.objects.all().order_by('id')
+  serializer_class = TicketsSongsSerializer
+  permission_classes = []
 
 class AlbumSongsView(APIView):
   def post(self, request):

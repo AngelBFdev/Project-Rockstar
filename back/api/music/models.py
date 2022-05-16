@@ -38,3 +38,27 @@ class Song(models.Model):
 
 # 	def __str__(self):
 # 		return f'{self.id}'
+
+class Ticket(models.Model):
+  purchase_date = models.DateField(null=True)
+  user = models.CharField(max_length=128, null=True)
+  albums = models.ManyToManyField(Album, through='TicketsAlbums',null=True)
+  songs = models.ManyToManyField(Song, through='TicketsSongs',null=True)
+  total_price = models.DecimalField(max_digits=7, decimal_places=2, null=True)
+
+  def __str__(self):
+    return f'{self.name}'
+
+class TicketsAlbums(models.Model):
+	album = models.ForeignKey(Album, related_name='AlbumWithTickets', on_delete=models.DO_NOTHING)
+	ticket = models.ForeignKey(Ticket, related_name='TicketWithAlbums', on_delete=models.DO_NOTHING)
+
+	def __str__(self):
+		return f'{self.id}'
+
+class TicketsSongs(models.Model):
+	song = models.ForeignKey(Album, related_name='SongWithTickets', on_delete=models.DO_NOTHING)
+	ticket = models.ForeignKey(Ticket, related_name='TicketWithSongs', on_delete=models.DO_NOTHING)
+
+	def __str__(self):
+		return f'{self.id}'
